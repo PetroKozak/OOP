@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Converter {
     public void convert() {
-        HashMap<Integer, BasicConvert> systems = new HashMap<Integer, BasicConvert>();
+        HashMap<Integer, BasicConvert> systems = new HashMap<>();
         Scanner sc = new Scanner(System.in);
 
         systems.put(2, new BinaryConvert());
