@@ -1,8 +1,5 @@
 package com.petro.oop;
 
-public class BasicConvert {
-    public String convertingProcess(long number) {
-        return String.valueOf(number);
-    }
-
+public abstract class BasicConvert {
+    public abstract String convertingProcess(long number);
 }
