@@ -19,27 +19,21 @@ public class Converter {
         System.out.println("Please enter number to convert:");
         long wishedNumber = sc.nextLong();
 
-        switch (convertSystem) {
-            case ("2"):
-                convert = BasicConvert.BINARY_CONVERT;
-                result(convertSystem, wishedNumber, convert);
-                break;
-            case ("8"):
-                convert = BasicConvert.OCTAL_CONVERT;
-                result(convertSystem, wishedNumber, convert);
-                break;
-            case ("10"):
-                convert = BasicConvert.DECIMAL_CONVERT;
-                result(convertSystem, wishedNumber, convert);
-                break;
-            case ("16"):
-                convert = BasicConvert.HEXADECIMAL_CONVERT;
-                result(convertSystem, wishedNumber, convert);
-                break;
-            default:
-                System.out.println("You've set wrong converting system");
+        if (convertSystem.equalsIgnoreCase(BasicConvert.BINARY_CONVERT.getSystem())) {
+            convert = BasicConvert.BINARY_CONVERT;
+            result(convertSystem, wishedNumber, convert);
+        } else if (convertSystem.equalsIgnoreCase(BasicConvert.OCTAL_CONVERT.getSystem())) {
+            convert = BasicConvert.OCTAL_CONVERT;
+            result(convertSystem, wishedNumber, convert);
+        } else if (convertSystem.equalsIgnoreCase(BasicConvert.DECIMAL_CONVERT.getSystem())) {
+            convert = BasicConvert.DECIMAL_CONVERT;
+            result(convertSystem, wishedNumber, convert);
+        } else if (convertSystem.equalsIgnoreCase(BasicConvert.HEXADECIMAL_CONVERT.getSystem())) {
+            convert = BasicConvert.HEXADECIMAL_CONVERT;
+            result(convertSystem, wishedNumber, convert);
+        } else {
+            System.out.println("You've set wrong converting system");
         }
-
     }
 
 
