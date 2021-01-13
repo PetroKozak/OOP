@@ -3,7 +3,7 @@ package com.petro.oop;
 import java.util.Scanner;
 
 public class Converter {
-    void result(int system, long number, BasicConvert base) {
+    void result(String system, long number, BasicConvert base) {
         System.out.println("Your convert system is" + " " + system);
         System.out.println("Your wished number is" + " " + number);
         System.out.print("Your result is: ");
@@ -15,25 +15,25 @@ public class Converter {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Please enter Converting system:");
-        int convertSystem = sc.nextInt();
+        String convertSystem = sc.nextLine();
         System.out.println("Please enter number to convert:");
         long wishedNumber = sc.nextLong();
 
         switch (convertSystem) {
-            case (2):
-                convert = new BinaryConvert();
+            case ("2"):
+                convert = BasicConvert.BINARY_CONVERT;
                 result(convertSystem, wishedNumber, convert);
                 break;
-            case (8):
-                convert = new OctalConvert();
+            case ("8"):
+                convert = BasicConvert.OCTAL_CONVERT;
                 result(convertSystem, wishedNumber, convert);
                 break;
-            case (10):
-                convert = new DecimalConvert();
+            case ("10"):
+                convert = BasicConvert.DECIMAL_CONVERT;
                 result(convertSystem, wishedNumber, convert);
                 break;
-            case (16):
-                convert = new HexadecimalConvert();
+            case ("16"):
+                convert = BasicConvert.HEXADECIMAL_CONVERT;
                 result(convertSystem, wishedNumber, convert);
                 break;
             default:
