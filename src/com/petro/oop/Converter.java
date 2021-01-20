@@ -17,6 +17,7 @@ public class Converter {
         int convertSystem = sc.nextInt();
         System.out.println("Please enter number to convert:");
         long wishedNumber = sc.nextLong();
+        sc.close();
 
         if (systems.containsKey(convertSystem)) {
             System.out.println("Your convert system is" + " " + convertSystem);
