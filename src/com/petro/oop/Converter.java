@@ -18,6 +18,7 @@ public class Converter {
         String convertSystem = sc.nextLine();
         System.out.println("Please enter number to convert:");
         long wishedNumber = sc.nextLong();
+        sc.close();
 
         if (convertSystem.equalsIgnoreCase(BasicConvert.BINARY_CONVERT.getSystem())) {
             convert = BasicConvert.BINARY_CONVERT;
