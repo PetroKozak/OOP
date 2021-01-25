@@ -1,6 +1,7 @@
 package com.petro.collections;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class Exercises {
 
@@ -174,14 +175,18 @@ public class Exercises {
 
     void removeInRange(ArrayList<Integer> list, int start, int end, int value) {
         ArrayList<Integer> sublist = new ArrayList<>();
-        for (int i = start; i <= end; i++) {
-            sublist.add(list.get(i));
+        Iterator it= IntStream.range(start,end).iterator();
+
+        while(it.hasNext()){
+            sublist.add(list.get((Integer) it.next()));
         }
         list.removeAll(sublist);
 
-        for (int j = sublist.size() - 1; j >= 0; j--) {
-            if (sublist.get(j) == value) {
-                sublist.remove(j);
+        ListIterator listIterator = sublist.listIterator(sublist.size());
+
+        while(listIterator.hasPrevious()){
+            if (listIterator.previous().equals(value) ) {
+                listIterator.remove();
             }
         }
         list.addAll(start, sublist);
