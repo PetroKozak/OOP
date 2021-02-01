@@ -18,5 +18,6 @@ public class Main {
         map.put("Stef", 22);
 
         mex.rarest(map);
+        mex.rarest2(map);
     }
 }

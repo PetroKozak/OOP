@@ -30,25 +30,26 @@ public class MapExercises {
         ArrayList mp1ArrayValue;
         ArrayList mp1Keys = new ArrayList();
         HashMap map2 = new HashMap();
-        Object[] o = mp1.keySet().toArray();
+        ArrayList<Integer> list = new ArrayList<>(mp1.keySet());
 
         for (int i = 0; i < mp1.size(); i++) {
-            mp1ArrayValue = (ArrayList) mp1.get(o[i]);
-            map2.put(o[i], mp1ArrayValue.size());
+            mp1ArrayValue = (ArrayList) mp1.get(list.get(i));
+            map2.put(list.get(i), mp1ArrayValue.size());
         }
 
-        Object minFrequency = Collections.min(map2.values());
-        Object minAge = new Object();
+        int minFrequency = (Integer) Collections.min(map2.values());
+        int minAge = 0;
         Iterator iter = map2.entrySet().iterator();
 
         while (iter.hasNext()) {
             Map.Entry entry = (Map.Entry) iter.next();
             if (entry.getValue().equals(minFrequency)) {
-                minAge = entry.getKey();
+                minAge = (int) entry.getKey();
             }
         }
 
-        iter= map.entrySet().iterator();
+        iter = map.entrySet().iterator();
+
         while (iter.hasNext()) {
             Map.Entry entry = (Map.Entry) iter.next();
             if (entry.getValue().equals(minAge)) {
@@ -57,7 +58,48 @@ public class MapExercises {
         }
 
         System.out.println("The Students with least frequently occuring age are: "
-                + mp1Keys.toString().replace('[',' ').replace(']',' ')
+                + mp1Keys.toString().replace('[', ' ').replace(']', ' ')
                 + " with age: " + minAge + " and frequency: " + minFrequency);
+    }
+
+    void rarest2(HashMap<String, Integer> map) {
+        HashSet<Integer> set = new HashSet(map.values());
+        ArrayList<Integer> values = new ArrayList<>(map.values());
+        HashMap counts = new HashMap();
+        ArrayList<String> mapKeys = new ArrayList<>();
+        int minAge;
+        int minFrequency;
+
+        for (int sval : set) {
+            counts.put(arrayCount(values, sval), sval);
+        }
+
+        Iterator iter = map.entrySet().iterator();
+        minFrequency = (int) Collections.min(counts.keySet());
+        minAge = (int) counts.get(Collections.min(counts.keySet()));
+
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            if ((int) entry.getValue() == minAge) {
+                mapKeys.add((String) entry.getKey());
+            }
+        }
+
+        System.out.println("The Students with least frequently occuring age are: "
+                + mapKeys.toString().replace('[', ' ').replace(']', ' ')
+                + " with age: " + minAge + " and frequency:" + minFrequency);
+
+    }
+
+    int arrayCount(ArrayList<Integer> ar, int item) {
+        int count = 0;
+        for (int i = 0; i < ar.size(); i++) {
+            if (ar.get(i) == item) {
+                count++;
+            } else {
+                count = count;
+            }
+        }
+        return count;
     }
 }
